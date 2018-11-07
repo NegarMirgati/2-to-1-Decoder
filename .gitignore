@@ -1,0 +1,12 @@
+*.tr0
+*.pdf
+*.png
+*.docx
+*.doc
+*.st0
+*.ic0
+*.lis
+*.log
+*.bak
+*.pm
+.DS_Store
