@@ -1,4 +1,4 @@
-* 2-to-1 Decoder - pseudo-nmos Logic *
+* 2-to-1 Decoder - pseudo-nmos Logic 
 ************ Library *************
 .prot
 .inc '45nm.pm'
@@ -11,8 +11,8 @@
 .global	Vdd
 ****** Sources ******
 Vdd	    1	0  	1
-VinX	2	0	DC 1
-VinA	3	0   pulse  1  0  100ps  100ps    1ns    2ns
+VinX	2	0   pulse  1  0  100ps  100ps    1ns    2ns
+VinA	3	0   1
 
 ***************************** INVERTER ****************************
 
@@ -24,11 +24,11 @@ Mn2 OUT         IN      GND     GND     nmos        l='Lmin'  w='1*Lmin'
 **************************** AND GATE ****************************
 
 .SUBCKT Myand inA inB GND NODE AIOUT
-Mp3     AOUT     0       NODE    NODE    pmos    l ='Lmin'    w ='*Lmin'
-Mn5     AOUT     inA     mid     mid     nmos    l ='Lmin'    w ='4*Lmin'
-Mn6     mid      inB     GND     GND     nmos    l ='Lmin'    w ='4*Lmin'
+Mp3     AOUT     0       NODE    NODE    pmos    l ='Lmin'    w ='1*Lmin'
+Mn5     AOUT     inA     mid     mid     nmos    l ='Lmin'    w ='2*Lmin'
+Mn6     mid      inB     GND     GND     nmos    l ='Lmin'    w ='2*Lmin'
 
-Mp1	AIOUT	    0		NODE    NODE    pmos 	        l ='Lmin'  w ='1*Lmin'	
+Mp1	AIOUT	    0		NODE    NODE    pmos 	        l ='Lmin'  w ='0.5*Lmin'	
 Mn2 AIOUT       AOUT        GND     GND     nmos        l ='Lmin'  w ='1*Lmin'
 .ENDS Myand
 
@@ -43,12 +43,12 @@ X4 4 3 0  1  7 Myand
 *********Type of Analysis***
 .tran  0.1ns  20ns 
 
-
 .MEASURE TRAN tphl
-+ trig V(2) val = '0.5 * Vdd'  fall = 1  targ V(6)  val = '0.5 * Vdd' fall = 1
+ + trig V(2) val = '0.5 * Vdd'  fall = 1  targ V(7)  val = '0.5 * Vdd' rise = 1
 
 .MEASURE TRAN tplh
-+ trig V(2) val = '0.5 * Vdd' rise = 1 targ V(6) val = '0.5 * Vdd' rise = 1
++ trig V(2) val = '0.5 * Vdd' rise = 1 targ V(7) val = '0.5 * Vdd'  fall = 1
+
 
 
 .MEASURE TRAN tpd  param = '0.5 * (tphl + tplh)'
