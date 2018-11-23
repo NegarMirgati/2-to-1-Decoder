@@ -1,0 +1,16 @@
+$DATA1 SOURCE='HSPICE' VERSION='A-2008.03 32-BIT'
+.TITLE '* 2-to-1 decoder - cmos logic *'
+ tphl             tplh             tpd              avgpower          
+ pdp              temper           alter#            
+    failed         7.690e-11          failed         6.139e-07        
+    failed          25.0000           1.0000         
+
+.MEASURE TRAN tphl
+ + trig V(3) val = '0.5 * Vdd'  rise = 1  targ V(7)  val = '0.5 * Vdd' rise = 1
+
+.MEASURE TRAN tplh
++ trig V(3) val = '0.5 * Vdd' fall = 1 targ V(7) val = '0.5 * Vdd'  fall = 1
+
+
+VinX	2	0   0
+VinA	3	0   pulse  1  0  100ps  100ps    1ns    2ns

@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='A-2008.03 32-BIT'
+.TITLE '* 2-to-1 decoder - cmos logic *'
+ tphl             tplh             tpd              avgpower          
+ pdp              temper           alter#            
+  2.601e-09       -2.456e-09        7.240e-11        1.150e-06        
+  8.327e-17         25.0000           1.0000         
