@@ -11,7 +11,7 @@
 .global	Vdd
 ****** Sources ******
 Vdd	    1	0  	1
-VinX	2	0	DC 1
+VinX	2	0   DC 1
 VinA	3	0	DC 1
 
 ***************************** INVERTER ****************************

@@ -10,3 +10,5 @@
 *.bak
 *.pm
 .DS_Store
+*.pa0
+*.txt
